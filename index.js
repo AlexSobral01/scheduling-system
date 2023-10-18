@@ -25,7 +25,7 @@ async function connect() {
 connect();
 
 app.get('/', (req, res) => {
-  res.send('oi')
+  res.render('index');
 })
 
 app.get('/cadastro', (req, res) => {
