@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const mongoDB = require('mongodb');
 const mongoose = require('mongoose');
 
 app.use(express.static('public'));
