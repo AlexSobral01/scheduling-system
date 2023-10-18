@@ -25,7 +25,7 @@ connect();
 
 
 app.get('/', (req, res) => {
-  res.send('working')
+  res.render('./create.ejs')
 })
 
 app.listen(3001, () => console.log('server working!'))
