@@ -58,4 +58,10 @@ app.get('/event/:id', async(req, res) => {
   res.render('event', {appo: appointment})
 })
 
+app.post('/finish', async(req, res) => {
+  const id = req.body.id;
+  await AppointmentService.Finish(id)
+  res.redirect('/');
+});
+
 app.listen(3001, () => console.log('server working!'))
