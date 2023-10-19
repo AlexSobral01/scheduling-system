@@ -53,4 +53,9 @@ app.get('/getCalendar', async(req, res) => {
   res.json(appointments)
 })
 
+app.get('/event/:id', async(req, res) => {
+  const appointment = await AppointmentService.GetById(req.params.id);
+  res.render('event', {appo: appointment})
+})
+
 app.listen(3001, () => console.log('server working!'))
