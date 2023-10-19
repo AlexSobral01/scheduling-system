@@ -64,4 +64,18 @@ app.post('/finish', async(req, res) => {
   res.redirect('/');
 });
 
-app.listen(3001, () => console.log('server working!'))
+app.get('/list', async(req, res) => {
+
+  //await AppointmentService.Search('028.182.102-88')
+
+  const appos = await AppointmentService.GetAll(true);
+  res.render('list', {appos});
+
+});
+
+app.get('/searchResult', async(req, res) => {
+  const appos = await AppointmentService.Search(req.query.search)
+  res.render('list',{appos});
+})
+
+app.listen(3001, () => console.log('server working!')) 
