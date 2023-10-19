@@ -46,6 +46,11 @@ app.post('/create', async(req, res) => {
     } else {
       res.send('Ocorreu uma falha!');
     }
+});
+
+app.get('/getCalendar', async(req, res) => {
+  const consultas = await AppointmentService.GetAll(false)
+  res.json(consultas)
 })
 
 app.listen(3001, () => console.log('server working!'))
