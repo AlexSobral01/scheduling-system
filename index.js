@@ -76,6 +76,11 @@ app.get('/list', async(req, res) => {
 app.get('/searchResult', async(req, res) => {
   const appos = await AppointmentService.Search(req.query.search)
   res.render('list',{appos});
-})
+});
+
+var pollTime = 10000
+setInterval( async() => {
+  await AppointmentService.SendNotificaiton();
+}, pollTime)
 
 app.listen(3001, () => console.log('server working!')) 

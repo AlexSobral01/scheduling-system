@@ -13,7 +13,8 @@ class AppointmentService {
       cpf,
       date,
       time,
-      finished: false
+      finished: false,
+      notified: false
     });
     try {
       await newAppo.save();
@@ -65,6 +66,19 @@ class AppointmentService {
       console.log(err)
       return [];
     }
+  }
+  async SendNotificaiton() {
+    const appos = await this.GetAll(false);
+    appos.forEach(appo => {
+      const date = appo.start.getTime();
+      const hour = 1000 * 60 * 60;
+      const gap = date - Date.now();
+
+      if(gap <= hour) {
+        console.log(appo.title)
+        console.log('mande a notificação')
+      }
+    })
   }
 }
 
