@@ -65,12 +65,8 @@ app.post('/finish', async(req, res) => {
 });
 
 app.get('/list', async(req, res) => {
-
-  //await AppointmentService.Search('028.182.102-88')
-
   const appos = await AppointmentService.GetAll(true);
   res.render('list', {appos});
-
 });
 
 app.get('/searchResult', async(req, res) => {
@@ -78,7 +74,7 @@ app.get('/searchResult', async(req, res) => {
   res.render('list',{appos});
 });
 
-var pollTime = 10000
+var pollTime = 1000 * 60 * 5;
 setInterval( async() => {
   await AppointmentService.SendNotificaiton();
 }, pollTime)
